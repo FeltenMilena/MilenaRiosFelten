@@ -1,0 +1,221 @@
+﻿<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Teste Prático - Infortronics</title>
+    <base href="/">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <h3 class="card-title text-center">Teste Prático - Milena Rios Felten</h3>
+        <ul class="nav nav-tabs nav-justified mb-3">
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#ordenacaoNum">Questão 1</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#geraArquivoTxt">Questão 2</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#mostraEndereco">Questão 3</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#numeroPerfeito">Questão 4</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#tabuada">Questão 5</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#consultaSql">Questão 6</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#disponibilizaGit">Questão 7</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div id="ordenacaoNum" class="tab-pane container">
+                <div class="mb-3">
+                    <label for="numAleatorio" class="form-label">Digite uma sequência de números aleatórios (separados por ",")</label>
+                    <input type="text" class="form-control" id="numAleatorio" placeholder="Ex: 5,8,2,3,1">
+                </div>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
+                    <button type="button" class="btn btn-primary" onclick="ordenarNum()">Ordenar</button>
+                </div>
+                <label class="form-label">Números ordenados:</label>
+                <input type="text" class="form-control" id="numOrdenado" disabled>
+            </div>
+            <div id="geraArquivoTxt" class="tab-pane container">
+                <p class="text-secondary">*Obs. botão só fica habilitado após o preenchimento da questão 1</p>
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <button type="button" id="btnArquivo" class="btn btn-primary" disabled onclick="gravarArquivo()">Gravar números vizualizados (Questão 1) em arquivo txt</button>
+                </div>
+            </div>
+            <div id="mostraEndereco" class="tab-pane container">
+                <div class="mb-3">
+                    <label for="buscaEndereco" class="form-label">Informe seu CEP:</label>
+                    <input type="number" class="form-control" id="buscaEndereco" placeholder="Ex: 00000-000">
+                </div>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
+                    <button type="button" class="btn btn-primary" onclick="buscaEndereco()">Buscar Endereço</button>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label class="form-label">UF</label>
+                        <input type="text" class="form-control" id="uf" disabled>
+                    </div>
+                    <div class="col">
+                        <label class="form-label">Cidade</label>
+                        <input type="text" class="form-control" id="cidade" disabled>
+                    </div>
+                    <div class="col">
+                        <label class="form-label">Bairro</label>
+                        <input type="text" class="form-control" id="bairro" disabled>
+                    </div>
+                    <div class="col">
+                        <label class="form-label">Rua</label>
+                        <input type="text" class="form-control" id="rua" disabled>
+                    </div>
+                </div>
+            </div>
+            <div id="numeroPerfeito" class="tab-pane container">
+                <div class="mb-3">
+                    <label for="numPerfeito" class="form-label">Digite um número</label>
+                    <input type="number" class="form-control" id="numPerfeito">
+                </div>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
+                    <button type="button" class="btn btn-primary" onclick="verificaNum()">Verificar Se é Perfeito</button>
+                </div>
+                <label class="form-label">Resultado</label>
+                <input type="text" class="form-control" id="numResultado" disabled>
+            </div>
+            <div id="tabuada" class="tab-pane container">
+                <div class="mb-3">
+                    <label class="form-label">Digite um número</label>
+                    <input type="number" class="form-control mb-3" id="numero">
+                </div>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
+                    <button type="button" class="btn btn-primary" onclick="gerarTabuada()">Gerar Tabuada</button>
+                </div>
+                <div id="geraTabela">
+                </div>
+            </div>
+            <div id="consultaSql" class="tab-pane container">
+                <div class="mb-3">
+                    <label class="form-label">Script de Banco (SQL Server)</label>
+                </div>
+                <div class="row justify-content-center">
+                    <code class="language-sql">
+                        DECLARE @nasc AS VARCHAR(11) = '17/04/2008'<br>
+                        SELECT FLOOR(DATEDIFF(DD, CONVERT(DATE, @nasc, 103), GETDATE())/365.25)
+                    </code>
+                </div>
+            </div>
+            <div id="disponibilizaGit" class="tab-pane container">
+                <div class="d-grid gap-2 col-5 mx-auto">
+                    <a href="https://github.com/FeltenMilena/MilenaRiosFelten.git" class="btn btn-primary">
+                        Ver Código Fonte no Repositório do GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div>
+            <footer>
+            </footer>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script>
+
+        //Questão 1
+        function ordenarNum() {
+            let numAleatorio = $("#numAleatorio").val();
+            let numOrdenado = numAleatorio.split(",");
+            numOrdenado.sort((a, b) => parseInt(a) - parseInt(b));
+            let resultado = "";
+            for (var i = 0; i < numOrdenado.length; i++) {
+                resultado += "," + numOrdenado[i];
+            }
+            $("#numOrdenado").val(resultado.substring(1));
+            $("#btnArquivo").attr("disabled", false);
+        }
+
+        //Questão 2
+        function gravarArquivo() {
+            let numero = $("#numOrdenado").val().split(",");
+            let objeto = JSON.stringify({ numeros: numero });
+
+            arquivo = new Blob([objeto], {
+                type: 'application/json'
+            });
+
+            let nomeArquivo = "Infortronics";
+
+            let aElemento = document.createElement("a");
+            aElemento.download = nomeArquivo;
+            aElemento.innerHTML = "Download File";
+            if (window.webkitURL != null) {
+                aElemento.href = window.webkitURL.createObjectURL(arquivo);
+            } else {
+                aElemento.href = window.URL.createObjectURL(arquivo);
+                aElemento.onclick = destroyClickedElement;
+                aElemento.style.display = "none";
+                document.body.appendChild(aElemento);
+            }
+            aElemento.click();
+        }
+
+        //Questão 3
+        function buscaEndereco() {
+            var url = $(location).attr('href');
+            console.log(url);
+            let destino = "http://ObterEnderecoCEP//" + $("#buscaEndereco").val();
+            console.log(destino);
+            let soapMessage = '<x:Envelope xmlns:x="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://cliente.bean.master.sigep.bsb.correios.com.br/"><x:Header/><x:Body><cli:consultaCEP><cep>' + $("#buscaEndereco").val() + '</cep></cli:consultaCEP></x:Body></x:Envelope>';
+            $.ajax({
+                url: destino,
+                crossOrigin: null,
+                type: "POST",
+                dataType: "xml",
+                data: soapMessage,
+                contentType: "text/xml",
+                success: function (data) {
+                    let texto = data.documentElement.innerHTML;
+                    $("#uf").val(texto.split('<uf>')[1].split('</uf>', 1));
+                    $("#cidade").val(texto.split('<cidade>')[1].split('</cidade>', 1));
+                    $("#bairro").val(texto.split('<bairro>')[1].split('</bairro>', 1));
+                    $("#rua").val(texto.split('<end>')[1].split('</end>', 1));
+                },
+                error: function (data) {
+                    alert("CEP Inválido");
+                }
+            });
+        }
+
+        //Questão 4
+        function verificaNum() {
+            let numero = $("#numPerfeito").val();
+            let soma = 0;
+            for (var i = 0; i < numero; i++) {
+                if (numero % [i] == 0) {
+                    soma = soma + parseInt([i]);
+                }
+            }
+            $("#numResultado").val((soma == numero ? "O Número é Perfeito" : "O Número Não é Perfeito"));
+        }
+
+        //Questão 5
+        function gerarTabuada() {
+            $("#tabela").remove(); 3
+            $("#geraTabela").append("<table class='table text-center' id='tabela'><thead><th scope='col-3'>Multiplicação</th><th scope='col-3'>Resultado</th></thead><tbody></tbody></table>");
+            for (var i = 1; i <= 10; i++) {
+                $("#tabela>tbody").append("<tr id='linha'><td>" + $("#numero").val() + " * " + [i] + "</td><td>" + $("#numero").val() * [i] + "</td></tr>");
+            }
+            $("#tabela").show();
+        }
+
+    </script>
+</body>
+</html>
